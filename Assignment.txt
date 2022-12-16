@@ -1,0 +1,20 @@
+Use case for Project.
+
+1. Clone the specified repository to local development environment.
+2. Add functionality to create User for the website.
+3. User should be login for with username and password to access the underlying resources.
+4. Logout functionality should be there for user.
+5. Allow authenticate user to Create a form to fill Job Application
+6. Fields are below:
+	a. Job Code
+	b. Title
+	c. Minimum Qualification
+	d. Sort Description
+	e. Application Last date to apply.
+	
+7. Above details should be save in database table.
+8. Create a Job Listing with action of Add Edit and Delete.
+9. With Add button new Job will be created
+10. With Edit button existing job will be modified.
+11. With Delete button existing job will be deleted with confirmation.
+12. After each action proper notification or message should be displayed on page
