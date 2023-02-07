@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Job Application Page";
+}
+<div>
+    <a class="text-center">
+        <div class="container">
+            <a asp-area="" asp-controller="Home" asp-action="Create">Create New</a>
+        </div>
+        <table class="table table-responsive bg-light">
+            <thead>
+                <tr>
+                    <td>Job Code</td>
+                    <td>Title</td>
+                    <td>Minimum Qualification</td>
+                    <td>Sort Description</td>
+                    <td>Joining Date</td>
+                    <td>Last date</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.JobApplication)
+                {
+                    <tr>
+                        <td>@item.JobCode</td>
+                        <td>@item.Title</td>
+                        <td>@item.MinimumQualification</td>
+                        <td>@item.SortDescription</td>
+                        <td>@item.LastDate</td>
+                        <td><a asp-controller="Home" asp-action="Edit" asp-route-id="@item.Id">Edit</a></td>
+                        <td><a asp-controller="Home" asp-action="Delete" asp-route-id="@item.Id">Delete</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+</div>

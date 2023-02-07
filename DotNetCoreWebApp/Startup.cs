@@ -1,3 +1,5 @@
+using DotNetCoreWebApp.Models;
+using DotNetCoreWebApp.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,8 +9,10 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
-
+using DotNetCoreWebApp.Models;
+using DotNetCoreWebApp.Repository;
 namespace DotNetCoreWebApp
 {
     public class Startup
@@ -23,7 +27,15 @@ namespace DotNetCoreWebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<LoginDbcontext>(conn => conn.UseSqlServer(Configuration.GetConnectionString("connectionstr")));
+            services.AddScoped<ILogin, AuthenticateLogin>();
+
             services.AddControllersWithViews();
+
+            services.AddDbContext<JobAppDbcontext>(con => con.UseSqlServer(Configuration.GetConnectionString("connectionstr")));
+
+            services.AddTransient<IJobApplication, JobApplicationDetail>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

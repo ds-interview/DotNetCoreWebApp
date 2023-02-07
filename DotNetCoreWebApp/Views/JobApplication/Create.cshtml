@@ -1,0 +1,46 @@
+﻿@model DotNetCoreWebApp.ViewModel.JobApplicationViewmodel
+@{
+}
+<h2>@ViewBag.message</h2>
+<div class="container shadow p-5">
+    <div class="row pb-2">
+        <h2>Add Job Application</h2>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data" asp-controller="Home" asp-action="Create">
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="JobCode">Job Code</label>
+                <input type="text" class="form-control mb-3" asp-for="JobCode" placeholder="Enter Job Code">
+                <span asp-validation-for="JobCode" class="aler-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Title">Title</label>
+                <input type="text" class="form-control mb-3" asp-for="Title" placeholder="Enter Title">
+                <span asp-validation-for="Title" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="MinimumQualification">Minimum Qualification</label>
+                <input type="text" class="form-control mb-3" asp-for="MinimumQualification" placeholder="Enter Minimum Qualification">
+                <span asp-validation-for="MinimumQualification" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="SortDescription">Sort Description</label>
+                <input type="text" class="form-control mb-3" asp-for="SortDescription" placeholder="Enter Sort Description">
+                <span asp-validation-for="SortDescription" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="LastDate">Last Date</label>
+                <input type="date" class="form-control mb-3" asp-for="LastDate" placeholder="Enter Last Date">
+                <span asp-validation-for="LastDate" class="aler-danger"></span>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-lg btn-primary p-2" value="Submit" />
+    </form>
+</div>

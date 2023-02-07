@@ -1,0 +1,46 @@
+﻿@model DotNetCoreWebApp.ViewModel.JobApplicationViewmodel
+@{
+}
+<div>
+    <h2>Update Job Application</h2>
+
+    <form method="POST" enctype="multipart/form-data" asp-controller="Home" asp-action="Edit">
+
+        @* <div asp-validation-summary="All"></div>  *@
+
+        <div class="form-row">
+            <input asp-for="viewJobApplication.Id" hidden />
+            <div class="form-group col-md-6">
+                <label asp-for="JobCode">Job Code</label>
+                <input asp-for="viewJobApplication.JobCode" class="form-control">
+                <span asp-validation-for="JobCode" class="aler-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Title">Title</label>
+                <input asp-for="viewJobApplication.Title" class="form-control">
+                <span asp-validation-for="Title" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="MinimumQualification">Minimum Qualification</label>
+                <input asp-for="viewJobApplication.MinimumQualification" class="form-control">
+                <span asp-validation-for="MinimumQualification" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="SortDescription">Sort Description</label>
+                <input asp-for="viewJobApplication.SortDescription" class="form-control">
+                <span asp-validation-for="SortDescription" class="aler-danger"></span>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label asp-for="LastDate">Last Date</label>
+                <input asp-for="viewJobApplication.LastDate" class="form-control">
+                <span asp-validation-for="LastDate" class="aler-danger"></span>
+            </div>
+            
+        </div>
+        <br />
+        <button type="submit" class="btn btn-lg btn-primary p-2"><i class="bi bi-file-plus-fill"></i>Submit</button>
+    </form>
+</div>
