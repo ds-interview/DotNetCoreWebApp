@@ -1,0 +1,146 @@
+﻿@model demo.Models.User
+@{
+    ViewBag.Title = "Admin Signup";
+    Layout = "~/Views/Shared/Admin_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+
+                <div class="card-header pt-2 pb-2 text-center bg-primary">
+                </div>
+                <div class="card-body p-4">
+                    @if (@TempData["error"] != null)
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="divwarning" class="bg-warning p-1 mb-2 rounded">
+                                    <span class="text-black"><label class="col-form-label-lg" id="lblmsg"><i class="mdi mdi-alert mr-2 ml-2"></i>@TempData["error"]</label></span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    @if (@TempData["success"] != null)
+                    {
+                        <div class="row">
+                            <div class="col-12">
+                                <div id="divsuccess" class="bg-success p-1 mb-2 rounded">
+                                    <span class="text-white"><i class="mdi mdi-check-bold mr-2 ml-2"></i><label class="col-form-label-lg" id="lblmsg">@TempData["success"]</label></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    <div class="col-12">
+                        <div class="page-title-box">
+                            <div class="page-title-right" style="display: block"> <a href="/Login/Login" class="btn btn-outline-secondary">Log In</a> </div>
+                            <h4 id="heading" class="page-title">Sign Up</h4>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="col-xl-12 col-lg-12">
+                        <div class="card">
+                            <div class="card-body pb-5">
+
+                                @using (Html.BeginForm("SignUpUser", "Login", FormMethod.Post))
+                                {
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <label asp-for="Name">Name*</label>
+                                        </div>
+                                        <div class="col-9">
+                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter name", @id = "txtname" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <label asp-for="UserName">User Name*</label>
+                                        </div>
+                                        <div class="col-9">
+                                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter username", @id = "txtusername" })
+                                        </div>
+                                    </div>
+                                    <div class="row mb-2">
+                                        <div class="col-3">
+                                            <label asp-for="Password">Password*</label>
+                                        </div>
+                                        <div class="col-9">
+                                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter password", @type = "password", @id = "txtpassword" })
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <button id="btnsave" type="button" class="btn btn-outline-primary mb-2"><i class="mdi mdi-content-save mr-2"></i>Sign Up</button>
+                                    <label id="lblmsg" class="text-danger"></label>
+
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+        var path_to_add = "";
+
+        $(document).ready(function () {
+
+            $("#btnsave").click(function () {
+
+                path_to_add = $(this).data('path');
+
+                var l = $("#lblmsg");
+                var name = $("#txtname");
+                if (!name.val().trim()) {
+                    l.html("Please enter name!");
+                    name.addClass("border-danger");
+                    name.focus();
+                    return;
+                }
+                else { name.removeClass("border-danger"); }
+                var username = $("#txtusername");
+                if (!username.val().trim()) {
+                    l.html("Please enter user name!");
+                    username.addClass("border-danger");
+                    username.focus();
+                    return;
+                }
+                else { username.removeClass("border-danger"); }
+                var password = $("#txtpassword");
+                if (!password.val().trim()) {
+                    l.html("Please enter password!");
+                    password.addClass("border-danger");
+                    password.focus();
+                    return;
+                }
+                password.removeClass("border-danger");
+
+                if (password.val().length < 6) {
+                    $("#lblmsg").html("Please enter password length minimum 6 character");
+                    password.focus();
+                    return;
+                }
+                else {
+                    password.removeClass("border-danger");
+                    $("#btnsave").attr("type", "submit");
+                    $("#lblstatus").removeClass("d-none");
+
+                }
+
+            });
+        });
+
+
+
+
+    </script>
+
+}

@@ -1,0 +1,203 @@
+﻿@model demo.Models.JobApplication
+@{
+    ViewData["Title"] = "Add Job";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-page">
+    <div class="content">
+        <div class="container-fluid">
+            @if (@TempData["error"] != null)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div id="divwarning" class="bg-warning p-1 mb-2 rounded">
+                            <span class="text-black"><i class="mdi mdi-alert mr-2 ml-2"></i><label class="col-form-label-lg" id="lblmsg">@TempData["error"]</label></span>
+                        </div>
+                    </div>
+                </div>
+            }
+            @if (@TempData["success"] != null)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <div id="divsuccess" class="bg-success p-1 mb-2 rounded">
+                            <span class="text-white"><i class="mdi mdi-check-bold mr-2 ml-2"></i><label class="col-form-label-lg" id="lblmsg">@TempData["success"]</label></span>
+                        </div>
+
+                    </div>
+                </div>
+            }
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right" style="display: block"> <a href="/Home/Jobs" class="btn btn-dark"><span class="uil uil-list-ui-alt"></span> All Jobs</a> </div>
+                    <h4 id="heading" class="page-title"></h4>
+                </div>
+            </div>
+            <hr />
+            <div class="col-xl-12 col-lg-12">
+                <div class="card">
+                    <div class="card-body pb-5">
+
+                        @using (Html.BeginForm("JobApplication", "Home", FormMethod.Post))
+                        {
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label asp-for="JobCode">Job Code*</label>
+                                </div>
+                                <div class="col-9">
+
+                                    @Html.TextBoxFor(model => model.JobCode, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter job code", @id = "txtjobcode" })
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label asp-for="JobTitle">Job Title*</label>
+                                </div>
+                                <div class="col-9">
+
+                                    @Html.TextBoxFor(model => model.JobTitle, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter job title", @id = "txtjobtitle" })
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label asp-for="MinimumQualification">Minimum Qualification*</label>
+                                </div>
+                                <div class="col-9">
+
+                                    @Html.TextBoxFor(model => model.MinQualification, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter minimum qualification", @id = "txtminqualification" })
+                                </div>
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-3">
+                                    <label asp-for="Description">Description*</label>
+                                </div>
+                                <div class="col-9">
+
+                                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control col-9", @maxlength = "100", @placeholder = "Enter short description", @id = "txtdescription" })
+
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3">
+                                    <label asp-for="ApplyLastDate">Apply Last Date*</label>
+                                </div>
+                                <div class="col-9">
+                                    
+                                    @Html.TextBoxFor(model => model.ApplyLastDate, new { @class = "form-control col-3",  @dateformat = "dd-mm-yy", @type = "date", @placeholder = "Choose date", @id = "txtlastdate" })
+                                </div>
+                            </div>
+                            <hr />
+
+                            <button id="btnsave" type="button" class="btn btn-outline-primary mb-2"><i class="mdi mdi-content-save mr-2"></i>Save</button>
+                            <label id="lblmsg" class="text-danger"></label>
+                            @*<input type="hidden" id="txtid" value="0" />*@
+                            @Html.HiddenFor(m => m.Id, new {@id = "txtid"})
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+
+    <script type="text/javascript">
+        var path_to_add = "";
+        var id = _geturlkey('id');
+        $(document).ready(function () {
+            if (id) {
+                $("#txtid").val(id);
+                GetJobById(id);
+                $("#heading").html("Edit job");
+               
+            }
+            else {
+                
+                $("#heading").html("Add job");
+            }
+
+            $("#btnsave").click(function () {
+
+                path_to_add = $(this).data('path');
+
+                var l = $("#lblmsg");
+                var jobcode = $("#txtjobcode");
+                if (!jobcode.val().trim()) {
+                    l.html("Please enter job code!");
+                    jobcode.addClass("border-danger");
+                    jobcode.focus();
+                    return;
+                }
+                else { jobcode.removeClass("border-danger"); }
+                var jobtitle = $("#txtjobtitle");
+                if (!jobtitle.val().trim()) {
+                    l.html("Please enter job title!");
+                    jobtitle.addClass("border-danger");
+                    jobtitle.focus();
+                    return;
+                }
+                else { jobtitle.removeClass("border-danger"); }
+                var qualification = $("#txtminqualification");
+                if (!qualification.val().trim()) {
+                    l.html("Please enter minimum qualification!");
+                    qualification.addClass("border-danger");
+                    qualification.focus();
+                    return;
+                }
+                else { qualification.removeClass("border-danger"); }
+                var description = $("#txtdescription");
+                if (!description.val().trim()) {
+                    l.html("Please enter short description!");
+                    description.addClass("border-danger");
+                    description.focus();
+                    return;
+                }
+                else { description.removeClass("border-danger"); }
+                var lastdate = $("#txtlastdate");
+                if (!lastdate.val().trim()) {
+                    l.html("Please select last date to apply!");
+                    lastdate.addClass("border-danger");
+                    lastdate.focus();
+                    return;
+                }
+
+               else {
+                    lastdate.removeClass("border-danger");
+                    
+                    $("#btnsave").attr("type", "submit");
+                    $("#lblstatus").removeClass("d-none");
+
+                }
+
+            });
+        });
+
+
+        function GetJobById(id) {
+            $.ajax({
+                type: "GET",
+                url: "/api/Jobs/GetJobById?id=" + id,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                /*headers: { "Authorization": ticket },*/
+                success: function (d) {
+
+                    $("#txtjobcode").val(d.jobcode);
+                    $("#txtjobtitle").val(d.jobtitle);
+                    $("#txtminqualification").val(d.qualification);
+                    $("#txtdescription").val(d.description);
+                    $("#txtlastdate").val(d.lastdtapply);
+                    $("#lblmsg").html("");
+                },
+                error: function (e) {
+                    $("#lblmsg").html(_showerror(e));
+                    _showinfo("e", _showerror(e));
+                }
+            });
+        }
+
+    </script>
+
+}

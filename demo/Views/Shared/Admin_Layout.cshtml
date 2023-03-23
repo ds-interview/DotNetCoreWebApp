@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="" />
+    <meta content="" name="author" />
+
+    <script src="~/assets/js/vendor/apexcharts.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/app.js?v=8"></script>
+    <link href="~/assets/css/vendor/dataTables.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/responsive.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/buttons.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/select.bootstrap4.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/app.min.css" rel="stylesheet" type="text/css" id="light-style" />
+    <link href="~/assets/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" />
+    <link rel="shortcut icon" href="~/assets/images/logo-black.svg">
+    <link href="~/assets/css/vendor/summernote-bs4.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/fontawesome.css" rel="stylesheet" />
+    <link href="~/Content/fontawesome.min.css" rel="stylesheet" />
+    <script src="~/Scripts/fontawesome/fontawesome.js"></script>
+    <script src="~/Scripts/fontawesome/fontawesome.min.js"></script>
+    <title>@ViewBag.Title - Assignment</title>
+
+    
+
+</head>
+<body class="loading authentication-bg">
+    <div class="account-pages mt-5 mb-5">
+        @RenderBody()
+    </div>
+    <footer class="footer footer-alt">
+        <script>document.write(new Date().getFullYear())</script> Assignment © Rajendra Prasad
+    </footer>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @*<link href="~/Content/font-awesome.css" rel="stylesheet" />*@
+    <script src="~/assets/js/vendor.min.js"></script>
+    <script src="~/assets/js/app.min.js"></script>
+    <script src="~/assets/js/vendor/apexcharts.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
+    <script src="~/assets/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/assets/js/pages/demo.dashboard.js"></script>
+    <script src="~/assets/js/vendor/jquery.dataTables.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.bootstrap4.js"></script>
+    <script src="~/assets/js/vendor/dataTables.responsive.min.js"></script>
+    <script src="~/assets/js/vendor/responsive.bootstrap4.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.buttons.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/js/vendor/buttons.html5.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.keyTable.min.js"></script>
+    <script src="~/assets/js/vendor/dataTables.select.min.js"></script>
+    <script src="~/assets/js/pages/demo.datatable-init.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <link href="~/assets/css/toastr.min.css" rel="stylesheet" />
+</body>
+</html>
