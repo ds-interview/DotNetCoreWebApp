@@ -1,6 +1,6 @@
 Use case for Project.
 
-1. Clone the specified repository to local development environment.
+1. Clone the specified repository to local development environment. - Done
 2. Add functionality to create User for the website.
 3. User should be login for with username and password to access the underlying resources.
 4. Logout functionality should be there for user.
