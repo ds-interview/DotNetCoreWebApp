@@ -30,6 +30,7 @@ namespace DotNetCoreWebApp
 
             services.AddSingleton<DapperConnectionProvider>();
             services.AddScoped<ILoginRepo, LoginRepo>();
+            services.AddScoped<IJobRepo, JobRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

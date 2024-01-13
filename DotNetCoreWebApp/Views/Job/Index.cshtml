@@ -1,0 +1,59 @@
+﻿@model DotNetCoreWebApp.Models.JobDetailDto;
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Job Code</label>
+                    <input type="text" id="txtJobCode" class="form-control" value="@Model.JobCode" />
+                </div>
+            </div>
+            <div>
+                <div class="d-flex flex-row align-items-center mb-4">
+                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                    <div class="form-outline flex-fill mb-0">
+                        <label class="form-label" for="form3Example1c">Title</label>
+                        <input type="text" id="txtTitle" class="form-control" value="@Model.Title" />
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Minimum Qualification</label>
+                    <input type="text" id="txtMinQual" class="form-control" value="@Model.MinimumQualification" />
+                </div>
+            </div>
+            <div class="d-flex flex-row align-items-center mb-4">
+                <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                <div class="form-outline flex-fill mb-0">
+                    <label class="form-label" for="form3Example1c">Sort Description</label>
+                    <input type="text" id="txtSortDesc" class="form-control" value="@Model.SortDescription" />
+                </div>
+            </div>
+            <div class="mt-1">
+                <label>Last Date</label>
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="text" class="form-control" id="txtLastDate" />
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="mb-0 text-center">
+                <input type="button" id="btnCreate" value="Create Job" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+    {
+    <script src="~/js/Job.js"></script>
+}

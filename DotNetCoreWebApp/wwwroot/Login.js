@@ -33,6 +33,7 @@
                     if (status == 'success' && data !== "No Record") {
                         sessionStorage.setItem("LoggedInUserId", data.userId);
                         sessionStorage.setItem("LoggedInUserName", data.userId);
+                        window.location = '/Job/Index';
                     } else {
                         Swal.fire({
                             icon: "error",
