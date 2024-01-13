@@ -6,6 +6,14 @@
     <title>@ViewData["Title"] - DotNetCoreWebApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function gethostname() {
+            return window.location.host;
+        }
+        var apiBaseUrl = "https:" + "//" + gethostname() + "/api";
+        
+    </script>
 </head>
 <body>
     <header>
@@ -23,6 +31,12 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="Index">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="SignUp">Sign Up</a>
                         </li>
                     </ul>
                 </div>

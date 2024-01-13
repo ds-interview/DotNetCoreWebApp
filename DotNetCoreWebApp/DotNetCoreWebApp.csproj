@@ -4,4 +4,9 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.28" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.4" />
+  </ItemGroup>
+
 </Project>

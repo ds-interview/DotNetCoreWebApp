@@ -1,3 +1,6 @@
+using DotNetCoreWebApp.DataServices;
+using DotNetCoreWebApp.Service;
+using DotNetCoreWebApp.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +27,9 @@ namespace DotNetCoreWebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddSingleton<DapperConnectionProvider>();
+            services.AddScoped<ILoginRepo, LoginRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
