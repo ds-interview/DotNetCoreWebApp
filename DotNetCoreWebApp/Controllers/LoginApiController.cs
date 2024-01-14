@@ -31,6 +31,7 @@ namespace DotNetCoreWebApp.Controllers
             var result = await _loginRepo.ValidateLoginAsync(userDto);
             if (result != null)
             {
+                result.Token = Helper.EncodePasswordToBase64(userDto.UserId + "$" + userDto.UserName);
                 return StatusCode(StatusCodes.Status200OK, result);
             }
             else

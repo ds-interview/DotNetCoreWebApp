@@ -1,6 +1,6 @@
 ﻿@model DotNetCoreWebApp.Models.JobDetailDto;
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Create Job";
     Layout = "~/Views/Shared/_userLayout.cshtml";
 }
 <div class="container">
@@ -39,7 +39,7 @@
             <div class="mt-1">
                 <label>Last Date</label>
                 <div class="input-group date" data-provide="datepicker">
-                    <input type="text" class="form-control" id="txtLastDate" />
+                    <input type="text" class="form-control" id="txtLastDate" value="@Model.strLastDate" />
                     <div class="input-group-addon">
                         <span class="glyphicon glyphicon-th"></span>
                     </div>
@@ -47,7 +47,9 @@
             </div>
             <br />
             <div class="mb-0 text-center">
+                <input type="text" id="hdnJobId" style="display:none" class="form-control" value="@Model.JobDetailId" />
                 <input type="button" id="btnCreate" value="Create Job" class="btn btn-primary" />
+                <input type="button" id="btnUpdate" value="Update Job" class="btn btn-warning" />
             </div>
         </div>
     </div>

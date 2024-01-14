@@ -1,0 +1,66 @@
+﻿.textBox{
+    /*width:13%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #2B5C87;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height:120%;
+    background-color: #2B5C87;
+    color: white;*/
+    border: 3px double #CCCCCC;
+	     padding: 6px 8px;
+      width:180px;
+        margin: 8px 0;
+         border-radius: 4px;
+}
+
+.txt {
+    border: 2px double #CCCCCC;
+	     padding: 1px 8px;
+      width:210px;
+        margin: 6px 0;
+         border-radius: 4px;
+             height: 32px;
+
+
+}
+.drop{
+    width:180px;
+    padding: 9px 6px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height:50%;
+}
+
+.drp{
+    width:210px;
+    padding: 5px 6px;
+    margin: 6px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height:50%;
+}
+
+.button {
+       width: 124px;
+    background-color: #2B5C87;
+    color: white;
+    padding: 5px 0px;
+    margin: 18px 0;
+    border: none;
+    border-radius: 0px;
+    cursor: pointer;
+    }
+.label {
+    padding: 2px 10px;
+     border: 3px double #CCCCCC;
+	width: 230px;
+         width:60%;
+}

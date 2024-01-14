@@ -1,4 +1,5 @@
 ﻿using DotNetCoreWebApp.Models;
+using DotNetCoreWebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,9 +10,18 @@ namespace DotNetCoreWebApp.Controllers
 {
     public class JobController : Controller
     {
-        public IActionResult Index()
+        private readonly IJobRepo _jobRepo;
+        public JobController(IJobRepo jobRepo)
+        {
+            _jobRepo = jobRepo;
+        }
+
+        public async Task<IActionResult> Index(int id = 0)
         {
             JobDetailDto jobDetailDto = new JobDetailDto();
+            if (id > 0)
+                jobDetailDto = await _jobRepo.GetJobByJobId(id);
+
             return View(jobDetailDto);
         }
 

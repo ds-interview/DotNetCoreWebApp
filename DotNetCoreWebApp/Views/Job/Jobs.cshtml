@@ -1,16 +1,20 @@
-﻿<div class="row">
+﻿@{
+    ViewBag.Title = "Job List";
+    Layout = "~/Views/Shared/_userLayout.cshtml";
+}
+
+<div class="row">
     <div class="col-lg-12">
-        <h1 class="page-header">Channel Partner List</h1>
+        <h2 class="page-header">Job List</h2>
     </div>
-    <!-- /.col-lg-12 -->
 </div>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="table-responsive" id="divTable">
-                   
-                </div>                
+
+                </div>
             </div>
             <!-- /.panel-body -->
         </div>
@@ -22,5 +26,5 @@
 
 @section Scripts
     {
-    <script src="~/js/Scripts/channelpartnerlist.js"></script>
+    <script src="~/js/JobList.js"></script>
 }

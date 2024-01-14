@@ -13,5 +13,7 @@ namespace DotNetCoreWebApp.Models
         [StringLength(100)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        public string Token { get; set; }
     }
 }
