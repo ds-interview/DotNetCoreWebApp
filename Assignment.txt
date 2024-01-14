@@ -13,8 +13,8 @@ Use case for Project.
 	e. Application Last date to apply.
 	
 7. Above details should be save in database table. - Done
-8. Create a Job Listing with action of Add Edit and Delete.
-9. With Add button new Job will be created
-10. With Edit button existing job will be modified.
-11. With Delete button existing job will be deleted with confirmation.
-12. After each action proper notification or message should be displayed on page
+8. Create a Job Listing with action of Add Edit and Delete. - Done
+9. With Add button new Job will be created - Done
+10. With Edit button existing job will be modified. -Done
+11. With Delete button existing job will be deleted with confirmation. Done
+12. After each action proper notification or message should be displayed on page -Done
