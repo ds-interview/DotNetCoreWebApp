@@ -190,6 +190,7 @@ JobDetailId
 from
 JobDetail jd
 inner join Users usr on usr.UserId=jd.CreatedBy
+where jd.IsActive=1
 End
 GO
 /****** Object:  StoredProcedure [dbo].[USP_Get_JobDetail_By_Id]    Script Date: 1/14/2024 14:16:11 ******/

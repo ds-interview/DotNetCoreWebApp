@@ -1,4 +1,5 @@
 using DotNetCoreWebApp.DataServices;
+using DotNetCoreWebApp.Handler;
 using DotNetCoreWebApp.Service;
 using DotNetCoreWebApp.Services;
 using Microsoft.AspNetCore.Builder;
@@ -31,6 +32,9 @@ namespace DotNetCoreWebApp
             services.AddSingleton<DapperConnectionProvider>();
             services.AddScoped<ILoginRepo, LoginRepo>();
             services.AddScoped<IJobRepo, JobRepo>();
+            services.AddAuthentication(AuthenticationOptions.DefaultScheme).AddScheme<AuthenticationOptions, AuthenticationHandler>
+    (AuthenticationOptions.DefaultScheme,
+        options => { });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,14 +54,21 @@ namespace DotNetCoreWebApp
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
+               
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                   name: "Job",
+                   pattern: "{controller=Job}/{action=Index}/{id?}");
+
             });
         }
     }

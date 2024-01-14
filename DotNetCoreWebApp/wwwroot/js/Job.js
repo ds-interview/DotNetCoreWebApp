@@ -68,6 +68,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify(objJob),
                 cache: false,
+                headers: { "Token": sessionStorage.getItem("Token") },
                 success: function (data, status, xhr) {
                     if (status == 'success' && data > 0) {
                         Swal.fire({
@@ -77,6 +78,9 @@
                             showConfirmButton: true,
                             timer: 2000
                         });
+                        setTimeout(function () {
+                            window.location = '/Job/Jobs';
+                        }, 2500);
                     } else {
                         Swal.fire({
                             icon: "error",
@@ -158,6 +162,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify(objJob),
                 cache: false,
+                headers: { "Token": sessionStorage.getItem("Token") },
                 success: function (data, status) {
                     if (status == 'success' && data > 0) {
                         Swal.fire({
@@ -167,6 +172,9 @@
                             showConfirmButton: false,
                             timer: 2000
                         });
+                        setTimeout(function () {
+                            window.location = '/Job/Jobs';
+                        }, 2500);                        
                     } else {
                         Swal.fire({
                             icon: "error",

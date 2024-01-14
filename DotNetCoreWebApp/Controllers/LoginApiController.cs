@@ -52,6 +52,8 @@ namespace DotNetCoreWebApp.Controllers
             {
                 return StatusCode(StatusCodes.Status200OK, result);
             }
+            else if (result == -2)
+                return StatusCode(StatusCodes.Status400BadRequest, "User Already Present!.");
             else
                 return StatusCode(StatusCodes.Status204NoContent, "No Data");
         }

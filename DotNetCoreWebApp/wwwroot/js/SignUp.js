@@ -45,15 +45,19 @@
                 data: JSON.stringify(signUpDto),
                 cache: false,
                 success: function (data, status, xhr) {
+                    debugger
                     if (status == 'success' && data > 0) {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
-                            title: "Sign Up Success. Ypu can now Login",
+                            title: "Sign Up Success. You can now Login",
                             showConfirmButton: true,
                             timer: 2000
                         });
-                    } else {
+                        setTimeout(function () {
+                            window.location = '/Login/Index';
+                        }, 2500);
+                    } else if (status == 'success' && da){
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
@@ -62,11 +66,11 @@
                     }
                 },
                 error: function (data) {
-                    if (data.responseJSON.status == 'Login Failed') {
+                    if (data.responseText == 'User Already Present!.') {
                         Swal.fire({
                             icon: "error",
                             title: "Oops...",
-                            text: "Please check Username & Password!"
+                            text: data.responseText
                         });
                     } else {
                         Swal.fire({

@@ -1,5 +1,6 @@
 ﻿using DotNetCoreWebApp.Models;
 using DotNetCoreWebApp.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace DotNetCoreWebApp.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class JobApiController : ControllerBase
@@ -39,7 +41,7 @@ namespace DotNetCoreWebApp.Controllers
                 if (jobDto.SpType == 1)
                     result = await _jobRepo.Job(jobDto);
                 else
-                    result = await _jobRepo.ModifyJob(jobDto);
+                    result = await _jobRepo.UpdateJob(jobDto);
                 if (result > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, result);
@@ -62,7 +64,7 @@ namespace DotNetCoreWebApp.Controllers
                 if (jobDto.JobDetailId == 0)
                     return StatusCode(StatusCodes.Status400BadRequest, "Job Id not found");
 
-                var result = await _jobRepo.ModifyJob(jobDto);
+                var result = await _jobRepo.DeleteJob(jobDto);
                 if (result > 0)
                 {
                     return StatusCode(StatusCodes.Status200OK, result);

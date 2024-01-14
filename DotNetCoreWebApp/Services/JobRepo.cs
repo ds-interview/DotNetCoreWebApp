@@ -43,7 +43,7 @@ namespace DotNetCoreWebApp.Services
             }
         }
 
-        public async Task<int> ModifyJob(JobDetailDto jobDetailDto)
+        public async Task<int> UpdateJob(JobDetailDto jobDetailDto)
         {
             try
             {
@@ -58,6 +58,28 @@ namespace DotNetCoreWebApp.Services
                         jobDetailDto.SortDescription,
                         jobDetailDto.LastDate,
                         jobDetailDto.CreatedBy,
+                        jobDetailDto.ModifiedBy,
+                        jobDetailDto.SpType
+                    },
+                    commandType: CommandType.StoredProcedure);
+
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public async Task<int> DeleteJob(JobDetailDto jobDetailDto)
+        {
+            try
+            {
+                using var connection = dapperConnectionProvider.Connect();
+                var result = await connection.ExecuteAsync("USP_JobDetail",
+                    new
+                    {
+                        jobDetailDto.JobDetailId,                       
                         jobDetailDto.ModifiedBy,
                         jobDetailDto.SpType
                     },

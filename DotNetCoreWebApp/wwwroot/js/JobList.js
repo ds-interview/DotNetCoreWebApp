@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-
+    console.log(sessionStorage.getItem("Token"));
     function GetAllJobs() {
         $.ajax({
             type: 'GET',
@@ -9,9 +9,7 @@
                 $("#overlay").fadeIn(300);
             },
             url: apiBaseUrl + '/JobApi/GetAllJobs',
-            headers: {
-                Authorization: 'Bearer ' + sessionStorage.getItem("userToken"),
-            },
+            headers: { "Token": sessionStorage.getItem("Token") },
             success: function (data, status, xhr) {
                 if (status == 'success') {
                     dynamicTable(data);
@@ -106,8 +104,10 @@
                     contentType: 'application/json',
                     data: JSON.stringify(objJob),
                     cache: false,
+                    headers: { "Token": sessionStorage.getItem("Token") },
                     success: function (data, status, xhr) {
                         if (status == 'success' && data > 0) {
+                            GetAllJobs();
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',

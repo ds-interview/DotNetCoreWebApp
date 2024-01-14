@@ -9,6 +9,7 @@ namespace DotNetCoreWebApp.Services
         Task<int> Job(JobDetailDto jobDetailDto);
         Task<List<JobDetailDto>> GetAllJobs();
         Task<JobDetailDto> GetJobByJobId(int jobId);
-        Task<int> ModifyJob(JobDetailDto jobDetailDto);
+        Task<int> UpdateJob(JobDetailDto jobDetailDto);
+        Task<int> DeleteJob(JobDetailDto jobDetailDto);
     }
 }
